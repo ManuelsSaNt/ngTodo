@@ -1,0 +1,15 @@
+
+<article class="todo-card">
+  <div class="always-card-visible" (click)="showCard()">
+    <div class="todo-card-title">
+      <p>{{ todoTitle }}</p>
+    </div>
+    <div class="todo-card-icon">
+
+    </div>
+  </div>
+  <div class="desplegable-side" #desplegableSide>
+    <!-- the body of card -->
+    <p #description> {{ todoDescription }} </p>
+  </div>
+</article>

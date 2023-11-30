@@ -1,0 +1,31 @@
+
+
+.todo-card {
+  background-color: rgb(148, 148, 148);
+  color: #000000;
+  border-radius: 0.6rem;
+}
+
+.always-card-visible {
+  height: 2.2rem;
+  padding: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.desplegable-side {
+  height: 0px;
+  overflow: hidden;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  transition-property: height;
+  transition-duration: 0.4s;
+}
+
+.todo-card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding-left: 1rem;
+}
