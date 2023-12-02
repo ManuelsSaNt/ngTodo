@@ -1,4 +1,5 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild, WritableSignal, signal } from '@angular/core';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-todo-card',
@@ -16,23 +17,50 @@ export class TodoCardComponent {
   description!: ElementRef;
 
   @Input()
+  todoId!: number;
+
+  @Input()
   todoTitle!: string;
 
   @Input()
   todoDescription!: string;
 
-  showCard(): void {
+  @Output()
+  refreshEventEmitter = new EventEmitter<boolean>();
+
+  isHidden: WritableSignal<boolean> = signal(true);
+
+  isRemoved: WritableSignal<boolean> = signal(false);
+
+  @Input()
+  spaceFromTop!: string;
+
+  constructor(private _localStorage: LocalStorageService){}
+
+  swapHideCard(): void {
 
     const contentHeight: number = this.description.nativeElement.getBoundingClientRect().height;
-    const desplegableHeight: number = this.desplegableSide.nativeElement.getBoundingClientRect().height;
 
-    if (desplegableHeight > 0) {
+    if (!this.isHidden())
       this.desplegableSide.nativeElement.style.height = '0px';
-    } else {
+    else
       this.desplegableSide.nativeElement.style.height = (contentHeight + 40).toString() + 'px';
-    }
+
+    this.isHidden.set(!this.isHidden());
+  }
+
+  editCard(): void {
 
   }
 
+  completeTask(): void {
+
+    this.isRemoved.set(true);
+
+    setTimeout(() => {
+      this._localStorage.RemoveToDo(this.todoId);
+      this.refreshEventEmitter.emit(true);
+    }, 400)
+  }
 
 }

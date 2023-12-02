@@ -1,27 +1,42 @@
 
-<main class="main-container">
+<main class="main-wrapper">
+  <div class="main-container">
+    <div class="todo-container">
+      <section class="todo-content">
+        <div class="todo-sizer">
 
-  <div class="todo-container">
-    <h2 class="todo-container-title">Por Hacer: </h2>
-    <section class="todo-content">
-      <div class="todo-sizer">
-        <app-todo-card todoTitle="Comprar tomates" todoDescription="que no se me olvide ir por tomates"></app-todo-card>
-        <app-todo-card todoTitle="Limpiar mis tenis" todoDescription="que no se me olvide comprar limpiador y sentarme al impiar lo tenis simon"></app-todo-card>
-        <app-todo-card todoTitle="Comprar tomates" todoDescription="que no se me olvide ir por tomates"></app-todo-card>
+          @for (toDo of toDosList; track toDo.id) {
+            <app-todo-card
+            [spaceFromTop]="(($index + 1 * 2.2) + (4.2 * $index)).toString() + 'rem'"
+            (refreshEventEmitter)="RefreshToDos()"
+            [todoId]="toDo.id"
+            [todoTitle]="toDo.title"
+            [todoDescription]="toDo.content"
+            ></app-todo-card>
+          }
+
+        </div>
+      </section>
+    </div>
+
+    <div class="form-todo">
+      <div class="form-content">
+        <p class="form-title">
+          Crea un nuevo ToDO!!
+        </p>
+
+        <div class="text-form-field">
+          <label for="title-todo-field">TITULO</label>
+          <input #titleField id="title-todo-field" type="text">
+        </div>
+
+        <div class="text-form-field">
+          <label for="content-todo-field">CONTENIDO</label>
+          <textarea #contentField id="content-todo-field" type="text"></textarea>
+        </div>
+
+        <button class="form-save-btn" (click)="SaveToDo()">Guardar</button>
       </div>
-    </section>
-  </div>
-
-  <div class="form-todo">
-    <div class="form-content">
-      <p class="form-title">Crea un nuevo ToDO!!</p>
-
-      <div class="form-field">
-
-
-      </div>
-
-      <button>Guardar</button>
     </div>
   </div>
 </main>

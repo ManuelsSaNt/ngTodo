@@ -1,15 +1,28 @@
 
-
 .todo-card {
-  background-color: rgb(148, 148, 148);
+  position: absolute;
+  width: 540px;
+  background-color: rgb(249, 249, 249);
   color: #000000;
   border-radius: 0.6rem;
+
+  transform: scale(1), translateY(0);
+  opacity: 1;
+  top: 0;
+
+  transition-property: opacity, transform;
+  transition-duration: 0.4s;
+}
+
+.todo-removed {
+  transform: scale(0);
+  opacity: 0;
 }
 
 .always-card-visible {
+  position: relative;
   height: 2.2rem;
   padding: 1rem;
-  cursor: pointer;
   display: flex;
   align-items: center;
 }
@@ -27,5 +40,33 @@
 .todo-card-title {
   font-size: 1.1rem;
   font-weight: bold;
-  padding-left: 1rem;
+  width: 70%;
+  cursor: pointer;
+}
+
+.todo-card-buttons {
+  width: auto;
+  width: 30%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.2rem;
+
+  & button {
+    cursor: pointer;
+    height: 2rem;
+    width: 2rem;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.4rem;
+  }
+}
+
+.todo-rotate-btn {
+  & svg {
+    transition-property: transform;
+    transition-duration: 0.3s;
+  }
 }
