@@ -7,11 +7,15 @@
 
           @for (toDo of toDosList; track toDo.id) {
             <app-todo-card
+            (editEventEmitter)="OnEditCard($event)"
             [spaceFromTop]="(($index + 1 * 2.2) + (4.2 * $index)).toString() + 'rem'"
             (refreshEventEmitter)="RefreshToDos()"
             [todoId]="toDo.id"
             [todoTitle]="toDo.title"
             ></app-todo-card>
+          }
+          @empty {
+            <h2 class="empty-list" >Aun no hay ningún ToDo 😥</h2>
           }
 
         </div>
@@ -21,12 +25,25 @@
     <div class="form-todo">
       <div class="form-content">
         <p class="form-title">
-          Crea un nuevo ToDO!!
+          @if (editMode()) {
+            Modificando un ToDo 🫣
+          }
+          @else {
+            Crea un nuevo ToDO 😉
+          }
         </p>
 
         <div class="text-form-field">
           <label for="title-todo-field">TITULO</label>
           <input #titleField id="title-todo-field" type="text">
+          <p>
+            @if (errorInTitle()){
+              Longitud minima de un carácter.
+            }
+            @else {
+              &nbsp;
+            }
+          </p>
         </div>
 
         <button class="form-save-btn" (click)="SaveToDo()">Guardar</button>

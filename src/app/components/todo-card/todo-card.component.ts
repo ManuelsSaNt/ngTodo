@@ -1,5 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild, WritableSignal, signal } from '@angular/core';
 import { LocalStorageService } from '../../services/local-storage.service';
+import { ToDo } from '../../types/ToDo.type';
 
 @Component({
   selector: 'app-todo-card',
@@ -25,6 +26,9 @@ export class TodoCardComponent {
   @Output()
   refreshEventEmitter = new EventEmitter<boolean>();
 
+  @Output()
+  editEventEmitter: EventEmitter<ToDo> = new EventEmitter();
+
   isHidden: WritableSignal<boolean> = signal(true);
 
   isRemoved: WritableSignal<boolean> = signal(false);
@@ -35,11 +39,10 @@ export class TodoCardComponent {
   constructor(private _localStorage: LocalStorageService){}
 
   editCard(): void {
-
+    this.editEventEmitter.emit({id: this.todoId, title: this.todoTitle});
   }
 
   completeTask(): void {
-
     this.isRemoved.set(true);
 
     setTimeout(() => {
