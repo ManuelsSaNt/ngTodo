@@ -17,27 +17,21 @@ export class HomeComponent implements OnChanges{
   @ViewChild('titleField')
   titleField!: ElementRef<HTMLInputElement>;
 
-  @ViewChild('contentField')
-  contentField!: ElementRef<HTMLTextAreaElement>;
-
   constructor(private _localStorage: LocalStorageService){
     this.RefreshToDos();
   }
 
   SaveToDo(): void {
     const titleElement = this.titleField.nativeElement;
-    const contentElement = this.contentField.nativeElement;
 
     const toSaveToDo: ToDo = {
       id: this._localStorage.GetNewId(),
-      title: titleElement.value,
-      content: contentElement.value
+      title: titleElement.value
     }
 
     this._localStorage.SaveToDo(toSaveToDo);
 
     titleElement.value = '';
-    contentElement.value = '';
 
     // refresh the ToDo's in view
     this.toDosList = this._localStorage.ReadToDos();

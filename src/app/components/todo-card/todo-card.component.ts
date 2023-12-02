@@ -10,9 +10,6 @@ import { LocalStorageService } from '../../services/local-storage.service';
 })
 export class TodoCardComponent {
 
-  @ViewChild('desplegableSide')
-  desplegableSide!: ElementRef<HTMLElement>;
-
   @ViewChild('description')
   description!: ElementRef;
 
@@ -36,18 +33,6 @@ export class TodoCardComponent {
   spaceFromTop!: string;
 
   constructor(private _localStorage: LocalStorageService){}
-
-  swapHideCard(): void {
-
-    const contentHeight: number = this.description.nativeElement.getBoundingClientRect().height;
-
-    if (!this.isHidden())
-      this.desplegableSide.nativeElement.style.height = '0px';
-    else
-      this.desplegableSide.nativeElement.style.height = (contentHeight + 40).toString() + 'px';
-
-    this.isHidden.set(!this.isHidden());
-  }
 
   editCard(): void {
 

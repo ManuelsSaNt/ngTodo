@@ -27,16 +27,6 @@
   align-items: center;
 }
 
-.desplegable-side {
-  height: 0px;
-  overflow: hidden;
-  padding-left: 1rem;
-  padding-right: 1rem;
-
-  transition-property: height;
-  transition-duration: 0.4s;
-}
-
 .todo-card-title {
   font-size: 1.1rem;
   font-weight: bold;
@@ -64,9 +54,3 @@
   }
 }
 
-.todo-rotate-btn {
-  & svg {
-    transition-property: transform;
-    transition-duration: 0.3s;
-  }
-}

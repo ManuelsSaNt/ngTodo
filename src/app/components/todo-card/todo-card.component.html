@@ -1,7 +1,7 @@
 
 <article [class]="isRemoved() ? 'todo-card todo-removed' : 'todo-card'" [style.transform]="'translateY(' + spaceFromTop + ')'">
   <div class="always-card-visible">
-    <div class="todo-card-title" (click)="swapHideCard()">
+    <div class="todo-card-title">
       <p>{{ todoTitle }}</p>
     </div>
     <div class="todo-card-buttons">
@@ -11,14 +11,6 @@
       <button (click)="completeTask()">
         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
       </button>
-      <button class="todo-rotate-btn" (click)="swapHideCard()">
-        <svg [style.transform]="isHidden() ? 'rotate(0deg)' : 'rotate(180deg)'"
-        xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg>
-      </button>
     </div>
-  </div>
-  <div class="desplegable-side" #desplegableSide>
-    <!-- the body of card -->
-    <p #description> {{ todoDescription }} </p>
   </div>
 </article>

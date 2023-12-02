@@ -33,7 +33,6 @@ export class LocalStorageService {
     const toUpdateId = actualData.findIndex((savedToDo: ToDo) => savedToDo.id === toModify.id);
 
     actualData[toUpdateId].title = toModify.title;
-    actualData[toUpdateId].content = toModify.content;
 
     localStorage.setItem('allToDo', JSON.stringify(actualData));
   }
@@ -42,7 +41,7 @@ export class LocalStorageService {
     const actualData: ToDo[] = this.ReadToDos();
 
     // get a new array only with the id's of each note and extract the max of them
-    let maxIndex: number = Math.max(...actualData.map(toDo => toDo.id));
+    let maxIndex: number = Math.max(...actualData.map(toDo => toDo.id)) | 0;
 
     return maxIndex + 1;
   }

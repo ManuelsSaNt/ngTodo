@@ -11,7 +11,6 @@
             (refreshEventEmitter)="RefreshToDos()"
             [todoId]="toDo.id"
             [todoTitle]="toDo.title"
-            [todoDescription]="toDo.content"
             ></app-todo-card>
           }
 
@@ -28,11 +27,6 @@
         <div class="text-form-field">
           <label for="title-todo-field">TITULO</label>
           <input #titleField id="title-todo-field" type="text">
-        </div>
-
-        <div class="text-form-field">
-          <label for="content-todo-field">CONTENIDO</label>
-          <textarea #contentField id="content-todo-field" type="text"></textarea>
         </div>
 
         <button class="form-save-btn" (click)="SaveToDo()">Guardar</button>
