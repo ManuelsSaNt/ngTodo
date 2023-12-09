@@ -2,7 +2,7 @@
 <article [class]="isRemoved() ? 'todo-card todo-removed' : 'todo-card'" [style.transform]="'translateY(' + spaceFromTop + ')'">
   <div class="always-card-visible">
     <div class="todo-card-title">
-      <p>{{ todoTitle.length < 28 ? todoTitle : todoTitle.substring(0, 28) + '...' }}</p>
+      <p>{{ todoTitle }}</p>
     </div>
     <div class="todo-card-buttons">
       <button (click)="editCard()">

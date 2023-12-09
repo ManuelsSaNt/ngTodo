@@ -46,13 +46,21 @@
 .todo-card-title {
   font-size: 1.1rem;
   font-weight: bold;
-  width: 70%;
+  width: 82%;
   cursor: pointer;
+
+  & p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @media (max-width: 628px) {
+    width: 76%;
+  }
 }
 
 .todo-card-buttons {
-  width: auto;
-  width: 30%;
+  width: 18%;
   position: relative;
   display: flex;
   justify-content: flex-end;
@@ -67,6 +75,10 @@
     justify-content: center;
     align-items: center;
     border-radius: 0.4rem;
+  }
+
+  @media (max-width: 628px) {
+    width: 24%;
   }
 }
 
